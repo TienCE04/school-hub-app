@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_bgr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bgr_add_task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_bgr_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rounded_bgr_add_task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Huy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/h_y"
+        android:textColor="#082AC1"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/img_bgr_detail"
+        app:layout_constraintTop_toTopOf="@+id/img_bgr_detail" />
+
+    <TextView
+        android:id="@+id/Them"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="25dp"
+        android:text="@string/add"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Huy"
+        app:layout_constraintEnd_toEndOf="@+id/img_bgr_detail"
+        app:layout_constraintTop_toTopOf="@+id/Huy" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/new_task"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Huy"
+        app:layout_constraintEnd_toStartOf="@+id/Them"
+        app:layout_constraintStart_toEndOf="@+id/Huy"
+        app:layout_constraintTop_toTopOf="@+id/Huy" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="18dp"
+        app:cardCornerRadius="38dp"
+        app:layout_constraintBottom_toBottomOf="@id/img_bgr_detail"
+        app:layout_constraintEnd_toEndOf="@id/img_bgr_detail"
+        app:layout_constraintHeight_percent="0.52"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="@id/img_bgr_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <EditText
+        android:id="@+id/tieudeWork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@null"
+        android:elevation="2dp"
+        android:hint="@string/ti_u"
+        android:maxLines="1"
+        android:textColor="#0890FF"
+        android:textColorHint="#0890FF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintStart_toStartOf="@+id/card_view"
+        app:layout_constraintTop_toTopOf="@+id/card_view" />
+
+    <ImageView
+        android:id="@+id/img_line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/line_work"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="@id/card_view"
+        app:layout_constraintStart_toStartOf="@id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/tieudeWork" />
+
+    <EditText
+        android:id="@+id/ghichuWork"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="15dp"
+        android:background="@null"
+        android:elevation="2dp"
+        android:gravity="top"
+        android:hint="@string/ghi_ch"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cdv_time_work"
+        app:layout_constraintEnd_toEndOf="@id/card_view"
+        app:layout_constraintStart_toStartOf="@id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/img_line" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_time"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="18dp"
+        app:cardCornerRadius="38dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_bgr_detail"
+        app:layout_constraintEnd_toEndOf="@+id/img_bgr_detail"
+        app:layout_constraintStart_toStartOf="@+id/img_bgr_detail"
+        app:layout_constraintTop_toBottomOf="@id/card_view">
+
+        <TextView
+            android:id="@+id/tv_task_no_complete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:hint="@string/add_task_no_complete"
+            android:textSize="20sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdv_time_work"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#47CADB"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_view"
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tieudeWork"
+        app:layout_constraintWidth_percent="0.22">
+
+        <TextView
+            android:id="@+id/timeWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/_11_11"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

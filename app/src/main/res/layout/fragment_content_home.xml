@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/bgr_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#8FEFE2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img_avt"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:layout_constraintStart_toStartOf="@id/bgr_title"
+        app:layout_constraintTop_toTopOf="@+id/bgr_title"
+        app:riv_corner_radius="50dp"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <TextView
+        android:id="@+id/tv_name_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/name_user"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_avt"
+        app:layout_constraintEnd_toStartOf="@+id/img_scan"
+        app:layout_constraintStart_toEndOf="@+id/img_avt"
+        app:layout_constraintTop_toTopOf="@+id/img_avt" />
+
+    <ImageView
+        android:id="@+id/img_scan"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="10dp"
+        android:padding="6dp"
+        android:src="@drawable/icon_scan_qr"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name_user"
+        app:layout_constraintEnd_toEndOf="@+id/bgr_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_name_user" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_bgr_todo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bgr_title"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <ImageView
+        android:background="@drawable/bgr_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_bgr_todo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+    <ScrollView
+        android:id="@+id/scl_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/bgr_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_bgr_todo"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_schedule"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_tkb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/tv_schedule"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_schedule"
+                app:layout_constraintStart_toStartOf="@+id/img_schedule"
+                app:layout_constraintTop_toBottomOf="@+id/img_schedule" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_todo"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_todo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_todo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/todo_list"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_todo"
+                app:layout_constraintStart_toStartOf="@+id/img_todo"
+                app:layout_constraintTop_toBottomOf="@+id/img_todo" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_document"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_document"
+                app:layout_constraintEnd_toEndOf="@+id/img_schedule"
+                app:layout_constraintStart_toStartOf="@+id/img_schedule"
+                app:layout_constraintTop_toBottomOf="@+id/tv_schedule"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_document"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/document"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_document"
+                app:layout_constraintStart_toStartOf="@+id/img_document"
+                app:layout_constraintTop_toBottomOf="@+id/img_document" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_files"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_file"
+                app:layout_constraintEnd_toEndOf="@+id/img_todo"
+                app:layout_constraintStart_toStartOf="@+id/img_todo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_todo"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_files"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/files"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_files"
+                app:layout_constraintStart_toStartOf="@+id/img_files"
+                app:layout_constraintTop_toBottomOf="@+id/img_files" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_new_feed"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_new_feed"
+                app:layout_constraintEnd_toEndOf="@+id/img_document"
+                app:layout_constraintStart_toStartOf="@+id/img_document"
+                app:layout_constraintTop_toBottomOf="@+id/tv_document"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_new_feed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/tv_activity"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="75dp"
+                app:layout_constraintEnd_toEndOf="@+id/img_new_feed"
+                app:layout_constraintStart_toStartOf="@+id/img_new_feed"
+                app:layout_constraintTop_toBottomOf="@+id/img_new_feed" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_quizz"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_quizz"
+                app:layout_constraintEnd_toEndOf="@+id/img_files"
+                app:layout_constraintStart_toStartOf="@+id/img_files"
+                app:layout_constraintTop_toBottomOf="@+id/tv_files"
+                app:riv_corner_radius="20dp" />
+
+            <TextView
+                android:id="@+id/tv_quizz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/tv_quizz"
+                android:layout_marginBottom="75dp"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_quizz"
+                app:layout_constraintStart_toStartOf="@+id/img_quizz"
+                app:layout_constraintTop_toBottomOf="@+id/img_quizz" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_list_todo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_bgr_todo"
+        app:layout_constraintEnd_toEndOf="@+id/img_bgr_todo"
+        app:layout_constraintStart_toStartOf="@+id/img_bgr_todo"
+        app:layout_constraintTop_toTopOf="@+id/img_bgr_todo" />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="4dp"
+        android:text="@string/detail"
+        android:textColor="#076256"
+        app:layout_constraintBottom_toBottomOf="@+id/img_bgr_todo"
+        app:layout_constraintEnd_toEndOf="@+id/img_bgr_todo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

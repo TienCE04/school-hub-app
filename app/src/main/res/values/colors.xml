@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#11CCB8</color>
+    <color name="intro_color">#0839E6</color>
+    <color name="color_app">#8FEFE2</color>
+    <color name="star_color">#26A7E6</color>
+    <color name="bgr_title">#8FEFE2</color>
+    <color name="bgr_icon_file">#3cb5de</color>
+    <color name="gray">#888</color>
+    <color name="bgr_icon_image">#da8a01</color>
+    <color name="bgr_icon_link">#e810e1</color>
+    <color name="color_task">#0AAADE</color>
+    <color name="mark_task_true">#26A7E6</color>
+    <color name="mark_task_false">#B0B0B0</color>
+    <color name="line_item_subject">#1F1A1A</color>
+</resources>

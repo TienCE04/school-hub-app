@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/bgr_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_back"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:padding="2dp"
+        android:src="@drawable/icon_back2"
+        app:layout_constraintBottom_toBottomOf="@+id/avt"
+        app:layout_constraintStart_toStartOf="@id/bgr_title"
+        app:layout_constraintTop_toTopOf="@+id/avt" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/avt"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:padding="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/bgr_title"
+        app:layout_constraintEnd_toEndOf="@id/bgr_title"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/icon_back"
+        app:layout_constraintTop_toTopOf="@id/bgr_title"
+        app:riv_corner_radius="50dp" />
+
+    <ImageView
+        android:id="@+id/img_call_camera"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="10dp"
+        android:padding="4dp"
+        android:src="@drawable/icon_call_camera"
+        app:layout_constraintBottom_toBottomOf="@id/avt"
+        app:layout_constraintEnd_toEndOf="@id/bgr_title"
+        app:layout_constraintTop_toTopOf="@+id/avt" />
+
+    <ImageView
+        android:id="@+id/img_call"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="5dp"
+        android:padding="4dp"
+        android:src="@drawable/icon_call"
+        app:layout_constraintBottom_toBottomOf="@+id/img_call_camera"
+        app:layout_constraintEnd_toStartOf="@+id/img_call_camera"
+        app:layout_constraintTop_toTopOf="@+id/img_call_camera" />
+
+    <TextView
+        android:id="@+id/tv_name_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/name_user"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/img_call"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/avt"
+        app:layout_constraintTop_toTopOf="@+id/avt" />
+
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/online"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/avt"
+        app:layout_constraintStart_toStartOf="@+id/tv_name_user"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_user" />
+
+    <ImageView
+        android:id="@+id/img_state"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/rounded_state_online"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_state"
+        app:layout_constraintStart_toEndOf="@+id/tv_state"
+        app:layout_constraintTop_toTopOf="@+id/tv_state" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_chat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bgr_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bgr_title" />
+
+    <ImageView
+        android:id="@+id/bgr_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#8fd8f1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_share"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:padding="5dp"
+        android:src="@drawable/icon_add_chat"
+        app:layout_constraintBottom_toBottomOf="@+id/bgr_bottom"
+        app:layout_constraintStart_toStartOf="@+id/bgr_bottom"
+        app:layout_constraintTop_toTopOf="@+id/bgr_bottom" />
+
+    <ImageView
+        android:id="@+id/icon_camera"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="5dp"
+        android:src="@drawable/icon_camera"
+        app:layout_constraintBottom_toBottomOf="@id/icon_share"
+        app:layout_constraintStart_toEndOf="@+id/icon_share"
+        app:layout_constraintTop_toTopOf="@+id/icon_share" />
+
+    <ImageView
+        android:id="@+id/icon_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="5dp"
+        android:src="@drawable/icon_image"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_camera"
+        app:layout_constraintStart_toEndOf="@+id/icon_camera"
+        app:layout_constraintTop_toTopOf="@+id/icon_camera" />
+
+    <EditText
+        android:id="@+id/edt_chat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg_edt_chat"
+        android:ellipsize="end"
+        android:hint="@string/hello_my_friend"
+        android:maxLines="1"
+        android:paddingVertical="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_image"
+        app:layout_constraintEnd_toStartOf="@id/icon_send"
+        app:layout_constraintStart_toEndOf="@+id/icon_image"
+        app:layout_constraintTop_toTopOf="@+id/icon_image" />
+
+    <ImageView
+        android:id="@+id/icon_send"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="4dp"
+        android:padding="4dp"
+        android:src="@drawable/icon_send"
+        app:layout_constraintBottom_toBottomOf="@+id/bgr_bottom"
+        app:layout_constraintEnd_toEndOf="@id/bgr_bottom"
+        app:layout_constraintTop_toTopOf="@+id/bgr_bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

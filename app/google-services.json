@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "699214606573",
+    "project_id": "workandstudyv2",
+    "storage_bucket": "workandstudyv2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699214606573:android:5c583cc6b05d86688f1ce4",
+        "android_client_info": {
+          "package_name": "com.example.workandstudyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699214606573-9ql7ph95njbrmfdr30hun5fsret7fko1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.workandstudyapp",
+            "certificate_hash": "bf54daae25acc6e6e76dffde7f48a6e1c571660c"
+          }
+        },
+        {
+          "client_id": "699214606573-u3qa9a64r8mkf4921ib6pc9gvld2lt12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzx89UTBMJxbBpgrEbYZ-oB1eId2MFjOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699214606573-u3qa9a64r8mkf4921ib6pc9gvld2lt12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

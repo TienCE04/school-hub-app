@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/nav_school"
+        android:title="@string/school" />
+    <item
+        android:id="@+id/nav_setting"
+        android:title="@string/setting" />
+    <item
+        android:id="@+id/nav_me"
+        android:title="@string/about_me" />
+    <item
+        android:id="@+id/share"
+        android:title="@string/share" />
+    <item
+        android:id="@+id/nav_support"
+        android:title="@string/support_and_feedback" />
+    <item
+        android:id="@+id/nav_sign_out"
+        android:title="@string/sign_out" />
+</menu>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.workandstudyapp.ui.splash.SplashFragment"
+        android:label="Splash Fragment">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment android:id="@+id/loginFragment"
+        android:name="com.example.workandstudyapp.ui.auth.FragmentLogin"
+        android:label="Login Fragment">
+            android:id="@+id/action_loginFragment_to_fragmentSignUp"
+            app:destination="@id/fragmentSignUp" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeContainerFragment"
+            app:destination="@id/homeContainerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_fragmentSignUp"
+            app:destination="@id/fragmentSignUp" />
+    </fragment>
+    <fragment android:id="@+id/fragmentSignUp"
+        android:name="com.example.workandstudyapp.ui.auth.FragmentSignUp"
+        android:label="SignUp Fragment">
+        <action
+            android:id="@+id/action_fragmentSignUp_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment android:id="@+id/scheduleFragment"
+        android:name="com.example.workandstudyapp.ui.schedule.FragmentSchedule"
+        android:label="Schedule Fragment">
+        <action
+            android:id="@+id/action_scheduleFragment_to_homeContainerFragment"
+            app:destination="@id/homeContainerFragment" />
+    </fragment>
+    <fragment android:id="@+id/homeContainerFragment"
+        android:name="com.example.workandstudyapp.ui.home.FragmentContainerHome"
+        android:label="Home Container Fragment">
+        <action
+            android:id="@+id/action_homeContainerFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+    </fragment>
+</navigation>

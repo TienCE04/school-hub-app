@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_info">
+
+    <TextView
+        android:id="@+id/timeStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/_06_45"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_1"
+        android:layout_width="2dp"
+        android:layout_height="13dp"
+        android:layout_marginVertical="2dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/timeEnd"
+        app:layout_constraintEnd_toEndOf="@+id/timeStart"
+        app:layout_constraintStart_toStartOf="@+id/timeStart"
+        app:layout_constraintTop_toBottomOf="@+id/timeStart" />
+
+    <TextView
+        android:id="@+id/timeEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/time_end"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/timeStart" />
+
+    <TextView
+        android:id="@+id/tv_Name_Subject"
+        android:layout_width="0dp"
+        android:layout_marginTop="-5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:ellipsize="end"
+        android:hint="@string/name_subject"
+        android:maxLines="1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeStart"
+        app:layout_constraintTop_toTopOf="@+id/timeStart" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:ellipsize="end"
+        android:hint="@string/tv_location"
+        android:maxLines="1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_Name_Subject"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Name_Subject" />
+
+    <TextView
+        android:id="@+id/tv_week"
+        android:layout_marginBottom="-5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/tv_week"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/timeEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_location" />
+</androidx.constraintlayout.widget.ConstraintLayout>
