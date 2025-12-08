@@ -15,8 +15,6 @@
     <fragment android:id="@+id/loginFragment"
         android:name="com.example.workandstudyapp.ui.auth.FragmentLogin"
         android:label="Login Fragment">
-            android:id="@+id/action_loginFragment_to_fragmentSignUp"
-            app:destination="@id/fragmentSignUp" />
         <action
             android:id="@+id/action_loginFragment_to_homeContainerFragment"
             app:destination="@id/homeContainerFragment" />
@@ -44,5 +42,25 @@
         <action
             android:id="@+id/action_homeContainerFragment_to_scheduleFragment"
             app:destination="@id/scheduleFragment" />
+        <action
+            android:id="@+id/action_homeContainerFragment_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
+    <fragment android:id="@+id/fragmentTodo"
+        android:name="com.example.workandstudyapp.ui.todolist.FragmentTodo"
+        android:label="Fragment Todo">
+        <action
+            android:id="@+id/action_fragmentTodo_to_homeContainerFragment"
+            app:destination="@id/homeContainerFragment" />
+        <action
+            android:id="@+id/action_fragmentTodo_to_fragmentAddTask"
+            app:destination="@id/fragmentAddTask" />
+    </fragment>
+    <fragment android:id="@+id/fragmentAddTask"
+        android:name="com.example.workandstudyapp.ui.todolist.task.FragmentAddTask"
+        android:label="Fragment Add Task">
+        <action
+            android:id="@+id/action_fragmentAddTask_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
     </fragment>
 </navigation>

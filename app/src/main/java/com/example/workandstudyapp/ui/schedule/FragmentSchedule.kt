@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.workandstudyapp.R
 import com.example.workandstudyapp.databinding.FragmentScheduleBinding
 
 class FragmentSchedule: Fragment(), View.OnClickListener {
@@ -42,6 +43,10 @@ class FragmentSchedule: Fragment(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-
+        when(p0?.id){
+            R.id.icon_back->{
+                findNavController().popBackStack()
+            }
+        }
     }
 }

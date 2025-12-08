@@ -35,6 +35,7 @@ class FragmentHome: Fragment(), View.OnClickListener {
     private fun initListener(){
         binding.content.imgSchedule.setOnClickListener(this)
         binding.content.imgAvt.setOnClickListener(this)
+        binding.content.imgTodo.setOnClickListener(this)
     }
 
     private fun setupNavigationView(){
@@ -46,6 +47,7 @@ class FragmentHome: Fragment(), View.OnClickListener {
             binding.drawer.closeDrawers()
             true
         }
+        //header in navigation,
     }
 
     override fun onClick(p0: View?) {
@@ -56,6 +58,10 @@ class FragmentHome: Fragment(), View.OnClickListener {
             }
             R.id.img_avt->{
                 binding.drawer.openDrawer(GravityCompat.START)
+            }
+            R.id.img_todo->{
+                findNavController().navigate(R.id.action_homeContainerFragment_to_fragmentTodo,null,
+                    NavOption.animationFragment)
             }
         }
     }

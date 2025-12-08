@@ -6,6 +6,7 @@
     <color name="intro_color">#0839E6</color>
     <color name="color_app">#8FEFE2</color>
     <color name="star_color">#26A7E6</color>
+    <color name="red">#ff0000</color>
     <color name="bgr_title">#8FEFE2</color>
     <color name="bgr_icon_file">#3cb5de</color>
     <color name="gray">#888</color>

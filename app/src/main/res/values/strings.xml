@@ -104,4 +104,7 @@
     <string name="document_reference">4. Tài liệu tham khảo</string>
     <string name="btn_document_reference">Tài liệu tham khảo</string>
     <string name="file_subject">https://drive.google.com</string>
+    <string name="habit">Thói quen</string>
+    <string name="history">Lịch sử</string>
+    <string name="task">Nhiệm vụ</string>
 </resources>

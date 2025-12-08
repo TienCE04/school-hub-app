@@ -1,7 +1,10 @@
 package com.example.workandstudyapp.utils
 
 
+import android.util.Log
+import androidx.activity.addCallback
 import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.workandstudyapp.R
 
 object NavOption{
