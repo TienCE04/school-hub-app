@@ -52,10 +52,10 @@
         android:layout_marginEnd="10dp"
         android:paddingHorizontal="4dp"
         android:src="@drawable/icon_mark_task"
-        android:tint="@color/mark_task_true"
         app:layout_constraintBottom_toBottomOf="@+id/tv_name_task"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_name_task" />
+        app:layout_constraintTop_toTopOf="@+id/tv_name_task"
+        app:tint="@color/mark_task_true" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_detail"

@@ -37,9 +37,9 @@ class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
         }
     }
 
-    fun deleteTask(task: TaskEntity){
+    fun deleteTask(idTask:Int){
         viewModelScope.launch {
-            val response=taskRepository.deleteTask(task)
+            val response=taskRepository.deleteTask(idTask)
             if(response){
                 _isState.value="Xóa thành công!"
             }
@@ -61,6 +61,23 @@ class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
         }
     }
 
+    fun updateDetailTask(idTask: Int,title:String, content: String, timeStart: String){
+        viewModelScope.launch {
+            val response=taskRepository.updateContentAndTime(idTask,title,content,timeStart)
+            if(response){
+                _isState.value="Cập nhật thành công!"
+            }
+            else{
+                _isState.value="Update Fail.."
+            }
+        }
+    }
+
+    fun resetState(){
+        viewModelScope.launch {
+            _isState.value=""
+        }
+    }
     fun getListTaskInDay(createAt:String){
         viewModelScope.launch {
             taskRepository.getListTaskByDay(createAt)

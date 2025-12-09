@@ -25,11 +25,14 @@ interface TaskDao{
     @Delete
     suspend fun deleteTask(task: TaskEntity): Int
 
+    @Query("DELETE FROM tasks WHERE idTask = :taskId")
+    suspend fun deleteTaskById(taskId:Int):Int
+
     @Update
     suspend fun updateTask(task: TaskEntity): Int
 
-    @Query("UPDATE tasks SET content = :newContent, timeStart = :timeStart WHERE idTask = :taskId")
-    suspend fun updateContentTask(taskId:Int,newContent:String,timeStart:String):Int
+    @Query("UPDATE tasks SET title = :title, content = :newContent, timeStart = :timeStart WHERE idTask = :taskId")
+    suspend fun updateContentTask(taskId:Int,title:String,newContent:String,timeStart:String):Int
 
     //truy vấn nhiệm vụ quá hạn, đã hoàn thành trước ngày hiện tại
     @Query("SELECT * FROM tasks WHERE createAt = :createAt AND completed ='false'")

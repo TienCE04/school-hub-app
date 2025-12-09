@@ -39,17 +39,17 @@ class TaskRepository(private val taskDao: TaskDao) {
         }
     }
 
-    suspend fun updateContentAndTime(idTask: Int, content: String, timeStart: String): Boolean {
+    suspend fun updateContentAndTime(idTask: Int,title:String, content: String, timeStart: String): Boolean {
         try {
-            return taskDao.updateContentTask(idTask, content, timeStart) > 0
+            return taskDao.updateContentTask(idTask,title, content, timeStart) > 0
         } catch (e: Exception) {
             Log.d("DEBUG_UPDATE_CONTENT_TASK", "Error: ${e.message}", e)
             return false
         }
     }
 
-    suspend fun deleteTask(task: TaskEntity): Boolean {
-        return taskDao.deleteTask(task) > 0
+    suspend fun deleteTask(idTask: Int): Boolean {
+        return taskDao.deleteTaskById(idTask) > 0
     }
 
     fun getTasksIncompleted(createAt:String): Flow<List<TaskEntity>>{

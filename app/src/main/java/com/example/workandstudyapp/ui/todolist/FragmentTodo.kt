@@ -15,6 +15,7 @@ import com.example.workandstudyapp.databinding.FragmentTodoBinding
 import com.example.workandstudyapp.ui.todolist.task.adapter.OnClickInFragmentTask
 import com.example.workandstudyapp.utils.NavOption
 import com.google.android.material.tabs.TabLayoutMediator
+import java.time.LocalDate
 
 class FragmentTodo: Fragment(), View.OnClickListener{
 
@@ -86,7 +87,9 @@ class FragmentTodo: Fragment(), View.OnClickListener{
         when(p0?.id){
             R.id.fab->{
                 if(daySelected!=""){
-                    findNavController().navigate(R.id.action_fragmentTodo_to_fragmentAddTask,null,
+                    val bundle= Bundle()
+                    bundle.putString("daySelected",daySelected)
+                    findNavController().navigate(R.id.action_fragmentTodo_to_fragmentAddTask,bundle,
                         NavOption.animationFragment)
                 }
                 else{
@@ -95,4 +98,5 @@ class FragmentTodo: Fragment(), View.OnClickListener{
             }
         }
     }
+
 }

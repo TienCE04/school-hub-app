@@ -1,37 +1,44 @@
 package com.example.workandstudyapp.ui.todolist.task
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workandstudyapp.R
 import com.example.workandstudyapp.data.local.room.AppDatabase
 import com.example.workandstudyapp.data.local.room.dao.TaskDao
+import com.example.workandstudyapp.data.local.room.entity.TaskEntity
 import com.example.workandstudyapp.data.repository.todo.TaskRepository
+import com.example.workandstudyapp.databinding.DialogDetailTaskBinding
 import com.example.workandstudyapp.databinding.FragmentTaskBinding
 import com.example.workandstudyapp.ui.todolist.TodoViewModel
 import com.example.workandstudyapp.ui.todolist.data.NumberTaskInDay
 import com.example.workandstudyapp.ui.todolist.task.adapter.DayAdapter
 import com.example.workandstudyapp.ui.todolist.task.adapter.ItemDayDecoration
 import com.example.workandstudyapp.ui.todolist.task.adapter.OnClickInFragmentTask
+import com.example.workandstudyapp.ui.todolist.task.adapter.OnClickItemTask
 import com.example.workandstudyapp.ui.todolist.task.adapter.TaskAdapter
 import com.example.workandstudyapp.ui.todolist.viewmodel.TaskFactory
 import com.example.workandstudyapp.ui.todolist.viewmodel.TaskViewModel
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
+class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask, OnClickItemTask {
 
     private lateinit var _binding: FragmentTaskBinding
     private val binding get() = _binding
@@ -48,6 +55,7 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
     //
     private lateinit var dayAdapter: DayAdapter
     private lateinit var dayRcv: RecyclerView
+    private lateinit var dialogTask: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,14 +69,14 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         selectedDate= LocalDate.now()
         taskDao= AppDatabase.getDatabase(requireContext()).taskDao()
         initListener()
-        initAdapter()
         initViewModel()
+        initAdapter()
         initObserve()
     }
-
     private fun initObserve(){
         taskViewModel.checkTaskIn1Week.observe(viewLifecycleOwner){list->
             val newList = listDayInWeek.map { it.copy() }
@@ -90,12 +98,45 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
                 dayAdapter.submitList(newList)
             }
         }
+
+        //bắt đầu khi start và tự hủy khi stop
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                launch {
+                    taskViewModel.listTaskInDay.collect {list->
+                        if(list.isEmpty()){
+                            binding.tvNumberTask.text=requireContext().getString(R.string.no_task)
+                        }
+                        else{
+                            binding.tvNumberTask.text="Bạn có ${list.size} nhiệm vụ hôm nay"
+                            taskAdapter.submitList(list)
+                        }
+                    }
+                }
+                launch {
+                    taskViewModel.isState.collect { isState->
+                        if(isState.isNotEmpty()){
+                            Toast.makeText(requireContext(),isState, Toast.LENGTH_SHORT).show()
+                            taskViewModel.resetState()
+                        }
+                    }
+                }
+
+            }
+        }
+
+        todoViewModel.selectedDay.observe(viewLifecycleOwner){value->
+            binding.tvDate.text=getDateReal()
+        }
     }
 
     private fun initViewModel(){
         taskRepo= TaskRepository(taskDao)
         taskViewModel= ViewModelProvider(requireActivity(), TaskFactory(taskRepo))[TaskViewModel::class.java]
 
+        if(todoViewModel.selectedDay.value== LocalDate.now().toString()){
+            taskViewModel.getListTaskInDay(LocalDate.now().toString())
+        }
         getListDayInWeek()
 
     }
@@ -115,12 +156,15 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
                 selectedDate=selectedDate.minusWeeks(1)
                 getListDayInWeek()
             }
+            R.id.huyTask->{
+                dialogTask.dismiss()
+            }
         }
     }
 
     private fun initAdapter(){
         dayRcv=binding.rcvScheduleWeek
-        dayAdapter= DayAdapter(this)
+        dayAdapter= DayAdapter(this,todoViewModel.selectedDay.value)
         dayRcv.itemAnimator = null
         dayRcv.layoutManager= LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
         val spacing = resources.getDimensionPixelSize(R.dimen.spacing_24dp)
@@ -128,10 +172,12 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
         dayRcv.adapter=dayAdapter
 
         taskRcv=binding.rcvListTask
-        taskAdapter= TaskAdapter()
+        taskAdapter= TaskAdapter(this)
+        taskRcv.itemAnimator=null
         taskRcv.layoutManager= LinearLayoutManager(requireContext())
         taskRcv.adapter=taskAdapter
     }
+
 
     //ý tưởng dựa vào ngày hiện tại tính danh sách các ngày trong tuần
     //thứ 2 tương ứng với value = 1 đến 7 (chủ nhật)
@@ -172,6 +218,72 @@ class FragmentTask: Fragment(), View.OnClickListener, OnClickInFragmentTask {
 
     override fun onClickDay(day: String) {
         todoViewModel.clickItemDay(day)
+        binding.monthYear.text=getMonthYearReal()
+        taskViewModel.getListTaskInDay(day)
         Toast.makeText(requireContext(),"Bạn vừa click ngày: $day", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun clickCheckBox(task: TaskEntity) {
+        taskViewModel.updateTask(TaskEntity(task.idTask,task.title,task.content,task.timeStart,task.createAt,!task.completed,task.flag))
+    }
+
+    override fun clickMarkTask(task: TaskEntity) {
+        taskViewModel.updateTask(TaskEntity(task.idTask,task.title,task.content,task.timeStart,task.createAt,task.completed,!task.flag))
+    }
+    override fun clickDeleteTask(idTask:Int) {
+       taskViewModel.deleteTask(idTask)
+    }
+
+    override fun clickDetailTask(taskEntity: TaskEntity) {
+       initDialogTask(taskEntity.idTask,taskEntity.title,taskEntity.content,taskEntity.timeStart)
+    }
+    private fun initDialogTask(idTask:Int,title:String,content:String,time:String){
+        dialogTask= Dialog(requireContext())
+        val view= DialogDetailTaskBinding.inflate(layoutInflater)
+        view.nameTask.setText(title)
+        view.detailTask.setText(content)
+        view.timeWork.setText(time)
+        view.luuTask.setOnClickListener{
+            val titleNew=view.nameTask.text.toString()
+            val contentNew=view.detailTask.text.toString()
+            var timeNew=view.timeWork.text.toString()
+            if(checkInputAddTask(timeNew,contentNew,timeNew)){
+                if(checkTimeTask(timeNew)){
+                    timeNew=convertTime(timeNew)
+                    taskViewModel.updateDetailTask(idTask,titleNew,contentNew,timeNew)
+                    dialogTask.dismiss()
+                }
+                else{
+                    Toast.makeText(requireContext(),"Vui lòng nhập thời gian dạng HH:MM", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else{
+                dialogTask.dismiss()
+            }
+        }
+        view.huyTask.setOnClickListener(this)
+        view.imgClock.setOnClickListener{
+
+        }
+        dialogTask.setContentView(view.root)
+        dialogTask.window?.setBackgroundDrawableResource(R.drawable.rounded_dialog)
+        dialogTask.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialogTask.show()
+    }
+    fun getDateReal():String{
+        val dateReal= LocalDate.parse(todoViewModel.selectedDay.value)
+        val dayOfWeek=dateReal.dayOfWeek
+        val dayInMonth=dateReal.dayOfMonth
+        return "$dayOfWeek, $dayInMonth"
+    }
+
+    fun getMonthYearReal():String{
+        val dateReal= LocalDate.parse(todoViewModel.selectedDay.value)
+        val month=dateReal.month
+        val year=dateReal.year
+        return "$month $year"
     }
 }

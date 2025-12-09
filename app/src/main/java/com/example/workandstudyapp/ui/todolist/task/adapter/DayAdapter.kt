@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.workandstudyapp.databinding.ItemCalendarCellBinding
 import com.example.workandstudyapp.ui.todolist.data.NumberTaskInDay
 
-class DayAdapter(private val listener: OnClickInFragmentTask): ListAdapter<NumberTaskInDay, DayViewHolder>(DayDiffUtil()) {
-    private var selectedDate: String? = null
+class DayAdapter(private val listener: OnClickInFragmentTask,private var selectedDate: String?): ListAdapter<NumberTaskInDay, DayViewHolder>(DayDiffUtil()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

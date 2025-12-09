@@ -13,6 +13,7 @@
     <string name="gachCheo">/</string>
     <string name="ghi_ch">Ghi chú</string>
     <string name="ti_u">Tiêu đề</string>
+    <string name="no_task">Chưa có công việc nào!</string>
     <string name="h_y">Hủy</string>
     <string name="th_i_gian">thời gian</string>
     <string name="_10_45">[10:45]</string>
@@ -107,4 +108,6 @@
     <string name="habit">Thói quen</string>
     <string name="history">Lịch sử</string>
     <string name="task">Nhiệm vụ</string>
+    <string name="_1">1</string>
+    <string name="time_hint">06:00</string>
 </resources>

@@ -60,7 +60,9 @@ class FragmentHome: Fragment(), View.OnClickListener {
                 binding.drawer.openDrawer(GravityCompat.START)
             }
             R.id.img_todo->{
-                findNavController().navigate(R.id.action_homeContainerFragment_to_fragmentTodo,null,
+                val bundle= Bundle()
+                bundle.putString("fromHome","get data task date present once")
+                findNavController().navigate(R.id.action_homeContainerFragment_to_fragmentTodo,bundle,
                     NavOption.animationFragment)
             }
         }
